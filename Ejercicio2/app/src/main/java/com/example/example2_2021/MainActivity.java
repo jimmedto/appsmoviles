@@ -2,6 +2,7 @@ package com.example.example2_2021;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     TextView txtViewManager;
     ImageView imgViewManager;
     Intent myIntent;
+    Context myContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         buttonManager = findViewById(R.id.button);
         txtViewManager = findViewById(R.id.textView);
         imgViewManager = findViewById(R.id.imageView3);
+
+        myContext = getApplicationContext();
 
         buttonManager.setOnClickListener(new View.OnClickListener() {
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 if(imgViewManager.getVisibility() == View.VISIBLE){
                     imgViewManager.setVisibility(View.INVISIBLE);
 
-                    myIntent = new Intent(MainActivity.this, secondActivity.class);
+                    myIntent = new Intent(myContext, secondActivity.class);
                     startActivity(myIntent);
 
                     myIntent.putExtra("myExtra", txtViewManager.getText().toString());
